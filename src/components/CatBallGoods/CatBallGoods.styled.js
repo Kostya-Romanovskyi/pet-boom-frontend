@@ -12,7 +12,21 @@ export const StyledImg = styled.img`
   width: 100%;
 
   @media screen and (min-width: 768px) {
-    width: 45%;
+    width: 40%;
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 40%;
+  }
+`;
+
+export const InfoContainer = styled.div`
+  @media screen and (min-width: 768px) {
+    margin-left: 51px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-left: 120px;
   }
 `;
 
@@ -28,26 +42,47 @@ export const Info = styled.p`
   @media screen and (min-width: 768px) {
     font-size: 18px;
     line-height: 1.66;
-
-    margin-left: 40px;
   }
 
   @media screen and (min-width: 1200px) {
     font-size: 20px;
-    margin-left: 170px;
+
+    margin-left: 0;
   }
 `;
+
 export const FlexPrice = styled.div`
   display: flex;
   justify-content: center;
 
-  font-weight: 700;
+  font-size: 10px;
 
   align-items: center;
+
+  @media screen and (min-width: 1200px) {
+    justify-content: flex-start;
+  }
 `;
 
 export const Price = styled.p`
+  font-size: 15px;
   margin-left: 20px;
+  font-weight: 700;
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+`;
+
+export const Sale = styled.p`
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: line-through;
+  margin-left: 20px;
+  color: #808080;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
 `;
 
 export const FootLeftStyled = styled.img`
@@ -89,21 +124,20 @@ export const FootRightStyled = styled.img`
 export const StyledLink = styled.a`
   display: block;
 
-  padding: 10px 22px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
 
-  border: 1px solid #000000;
-  border-radius: 10px;
-
+  text-align: center;
   text-decoration: none;
 
-  color: #000000;
-  background-color: transparent;
+  padding: 10px 22px;
 
-  transition: color 500ms cubic-bezier(0.19, 1, 0.22, 1),
-    background-color 500ms cubic-bezier(0.19, 1, 0.22, 1);
+  border-radius: 50px;
+  background: #00c8c8;
 
-  &:hover {
-    color: #ffffff;
-    background-color: #000000;
+  @media screen and (min-width: 1200px) {
+    margin-right: 40px;
+    font-size: 20px;
   }
 `;

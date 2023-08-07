@@ -63,7 +63,10 @@ const UserForm = () => {
         validationSchema: OrderSchema,
         validateOnChange: false,
         onSubmit: (values, { resetForm }) => {
-            console.log(values)
+            if (values.moreInfo === '') {
+                values.moreInfo = '-'
+            }
+
             setIsLoading(true)
             submitUserData(values).then(() => setIsLoading(false))
 
@@ -154,7 +157,7 @@ const UserForm = () => {
                         onChange={formik.handleChange}
                         checked={formik.values.paymentMethod === 'Передоплата'}
                     />
-                    <StyledRadioLabel htmlFor="postpayment">Нова Пошта (Передоплата - БЕЗКОШТОВНА доставка)</StyledRadioLabel>
+                    <StyledRadioLabel htmlFor="postpayment">Нова Пошта (Передоплата)</StyledRadioLabel>
                 </FlexContainer>
                 {formik.touched.paymentMethod && formik.errors.paymentMethod ? (
                     <Error>{formik.errors.paymentMethod}</Error>
@@ -210,7 +213,7 @@ const UserForm = () => {
             </ButtonContainer> :
                 <ButtonContainer>
                     <MoonLoader />
-                    <LoaderText>Будь-ласка зачекайте</LoaderText>
+                    <LoaderText>Будь-ласка, зачекайте</LoaderText>
                 </ButtonContainer>}
         </StyledForm>
     );

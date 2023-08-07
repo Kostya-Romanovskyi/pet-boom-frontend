@@ -2,7 +2,7 @@ import '../../App.css'
 import GoodsImg from '../../assets/catBallPage/goodsList.png'
 import FootLeft from '../../assets/catBallPage/foot-print3.png'
 import FootRight from '../../assets/catBallPage/foot-print1.png'
-import { FlexWrapp, StyledImg, Info, FlexPrice, Price, FootLeftStyled, FootRightStyled, StyledLink } from './CatBallGoods.styled'
+import { FlexWrapp, StyledImg, InfoContainer, Info, FlexPrice, Price, Sale, FootLeftStyled, FootRightStyled, StyledLink } from './CatBallGoods.styled'
 
 const CatBallGoods = () => {
     return (
@@ -12,15 +12,16 @@ const CatBallGoods = () => {
                 <FootRightStyled src={FootRight} alt="Лапки" />
                 <FlexWrapp>
                     <StyledImg src={GoodsImg} alt="Способи використання м'ячика" />
-                    <div>
+                    <InfoContainer>
                         <Info>PetGravity - це м&apos;ячик, що обертається, який автоматично рухається по непередбачуваній траєкторії.
                             Це змушує вашого вихованця активно рухатися, щоб упіймати його.
                             Іграшка підходить для котів та собак усіх порід.</Info>
                         <FlexPrice>
                             <StyledLink href='#form'>Замовити товар</StyledLink>
-                            <Price>599 грн</Price>
+                            <Price>499 грн.</Price>
+                            <Sale>799 грн.</Sale>
                         </FlexPrice>
-                    </div>
+                    </InfoContainer>
                 </FlexWrapp>
             </div>
         </section>

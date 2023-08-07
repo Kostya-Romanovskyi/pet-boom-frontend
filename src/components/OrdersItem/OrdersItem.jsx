@@ -33,7 +33,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const OrdersItem = () => {
     const { changeStatus, usersData } = useContext(AuthContext)
-    console.log(usersData)
     return (
         <TableContainer style={{ paddingLeft: 10, paddingRight: 10 }} component={Paper}>
             <Table sx={{ minWidth: 700 }} aria-label="customized table">

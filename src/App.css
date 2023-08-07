@@ -62,7 +62,23 @@ ul {
 
   box-shadow: none !important;
 
-  background-color: transparent !important;
+  width: 50px !important;
+  height: 50px !important;
+
+  text-align: center !important;
+
+  border-radius: 50% !important;
+
+  background-color: #00c8c8 !important;
+}
+
+.toTop svg {
+  right: 20px !important;
+
+  box-shadow: none !important;
+
+  fill: #ffffff;
+  background-color: #00c8c8 !important;
 }
 
 @media screen and (min-width: 768px) {

@@ -1,35 +1,50 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, createContext, useState } from "react"
+import { Routes, Route, useLocation } from "react-router-dom"
+import CatBallPage from "./pages/CatBallPage/CatBallPage"
+import LoginPage from "./pages/LoginPage/LoginPage"
+import AdminPage from "./pages/AdminPage/AdminPage"
+import { getUsersData, fetchCurrentUser, logIn } from "./API/AdminsData"
+import { changeStatus } from "./API/SubmitUserData"
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+export const AuthContext = createContext()
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+function App() {
+    const [admin, setAdmin] = useState(null)
+    const [usersData, setUsersData] = useState([])
+    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    const location = useLocation()
+
+    console.log(admin)
+
+    useEffect(() => {
+        if (location.pathname === '/') {
+            return
+        }
+
+        const checkData = async () => {
+            const adminData = await fetchCurrentUser()
+            const usersInfo = await getUsersData()
+            setAdmin(adminData)
+            setUsersData(usersInfo)
+        }
+
+        checkData()
+    }, [location.pathname])
+
+    return (
+        <AuthContext.Provider value={{ usersData, logIn, changeStatus, isLoggedIn }}>
+            <Routes>
+
+                <Route path="/" element={<CatBallPage />} />
+
+                <Route path="/login" element={<LoginPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} adminData={admin} />} />
+
+                <Route path="/admin" element={<AdminPage isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} adminData={admin} />} />
+
+            </Routes>
+        </AuthContext.Provider>
+    )
 }
 
 export default App

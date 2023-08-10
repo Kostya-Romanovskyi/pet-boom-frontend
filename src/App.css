@@ -86,3 +86,7 @@ ul {
     right: 60px !important;
   }
 }
+
+.swal-modal .swal-text{
+  text-align:center
+}
